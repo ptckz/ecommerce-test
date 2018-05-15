@@ -37,5 +37,16 @@ public class ProductController {
     public void deleteProduct(@PathVariable("id") long id){
         productService.deleteProduct(id);
     }
+    
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public Product updateProduct(@PathVariable("id") long id, @RequestBody Product product){
+    	Product currentProduct = productService.findById(id);
+    	
+    	currentProduct.setName(product.getName());
+    	currentProduct.setValue(product.getValue());
+    	
+        return productService.updateProduct(currentProduct);
+    }
+    
 	
 }

@@ -10,5 +10,6 @@ public interface ProductService {
 	public Product findById(long id);
 	public List<Product> findAll();
 	public void deleteProduct(long id);
+	public Product updateProduct(Product product);
 	
 }
