@@ -43,8 +43,9 @@ public class ProductController {
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public void deleteProduct(@PathVariable("id") long id){
+    public ResponseEntity<?> deleteProduct(@PathVariable("id") long id){
         productService.deleteProduct(id);
+        return new ResponseEntity<Product>(HttpStatus.NO_CONTENT);
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
@@ -56,7 +57,6 @@ public class ProductController {
     	Product productUpdate = productService.updateProduct(currentProduct);
     	
         return new ResponseEntity<Product>(productUpdate, HttpStatus.OK);
-        
     }
 	
 }

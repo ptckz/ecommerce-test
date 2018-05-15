@@ -17,7 +17,7 @@ public class Product {
 	private long id;
     
 	private String name;
-	private double value;
+	private double price;
 	
 	public Product () {
 		
@@ -36,10 +36,10 @@ public class Product {
 		this.name = name;
 	}
 	public double getValue() {
-		return value;
+		return price;
 	}
-	public void setValue(double value) {
-		this.value = value;
+	public void setValue(double price) {
+		this.price = price;
 	}
 	
 }

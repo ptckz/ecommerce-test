@@ -1,4 +1,4 @@
-INSERT INTO product (name, value) values 
+INSERT INTO product (name, price) values 
 ('Iphone X', 5599),
 ('Iphone SE', 2599),
 ('Iphone SE', 2599),
