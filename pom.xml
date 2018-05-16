@@ -46,6 +46,11 @@
       <artifactId>spring-boot-starter-web</artifactId>
       <scope>compile</scope>
     </dependency>
+    		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+	</dependency>
     <dependency>
       <groupId>javax.servlet.jsp.jstl</groupId>
       <artifactId>jstl-api</artifactId>

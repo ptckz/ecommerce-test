@@ -27,8 +27,9 @@ public class CartController {
 	ProductService productService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-    public Cart create(){
-        return cartService.createNewCart();
+    public  ResponseEntity<?> create(){
+		Cart newCart = cartService.createNewCart();
+        return new ResponseEntity<Cart>(newCart, HttpStatus.CREATED);
     }
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
