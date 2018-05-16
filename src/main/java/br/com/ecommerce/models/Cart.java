@@ -32,11 +32,11 @@ public class Cart {
 	public void setId(long id) {
 		this.id = id;
 	}
-	public List<Item> getProducts() {
+	public List<Item> getItem() {
 		return item;
 	}
-	public void setProducts(List<Item> products) {
-		this.item = products;
+	public void setItem(List<Item> item) {
+		this.item = item;
 	}
 	public double getAmount() {
 		return amount;

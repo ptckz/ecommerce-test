@@ -11,7 +11,7 @@ INSERT INTO item (quantity, product_id) values
 
 
 INSERT INTO cart (amount) values
-(13396);
+(19396);
 
 INSERT INTO cart_item (cart_id, item_id) values
 (1, 1),
