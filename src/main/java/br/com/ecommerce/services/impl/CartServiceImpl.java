@@ -90,7 +90,7 @@ public class CartServiceImpl implements CartService{
 	}
 
 	@Override
-	public Cart removeProductCart(Cart cart, Product product) {
+	public void removeProductCart(Cart cart, Product product) {
 		List<Item> list = cart.getItem();
 		
 		Optional<Item> item = list.stream().filter(o -> o.getProduct().equals(product)).findFirst();
@@ -98,6 +98,5 @@ public class CartServiceImpl implements CartService{
 		
 		list.remove(currentItem);
 		itemService.delete(currentItem);
-		return cart;
 	}
 }

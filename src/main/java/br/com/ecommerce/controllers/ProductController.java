@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.ecommerce.models.Product;
 import br.com.ecommerce.services.ProductService;
+import br.com.ecommerce.util.CustomErrorType;
 
 @RestController
 @RequestMapping("/product")
@@ -26,6 +27,12 @@ public class ProductController {
 	
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public ResponseEntity<?> create(@RequestBody Product input){
+    	
+    	if(productService.isProductExist(input)) {
+    		 return new ResponseEntity(new CustomErrorType("Unable to create. A Product with name " + 
+    				 input.getName() + " already exist."), HttpStatus.CONFLICT);
+    	}
+    	
     	Product product = productService.createNewProduct(input);
         return new ResponseEntity<Product>(product, HttpStatus.CREATED);
     }
@@ -39,18 +46,34 @@ public class ProductController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> getUser(@PathVariable("id") long id) {
     	Product product = productService.findById(id);
+    	
+    	if (product == null) {
+            return new ResponseEntity(new CustomErrorType("Product with id " + id 
+                    + " not found"), HttpStatus.NOT_FOUND);
+        }
         return new ResponseEntity<Product>(product, HttpStatus.OK);
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<?> deleteProduct(@PathVariable("id") long id){
-        productService.deleteProduct(id);
+        Product currentProduct = productService.findById(id);
+        
+        if (currentProduct == null) {
+            return new ResponseEntity(new CustomErrorType("Unable to delete. Product with id " + id + " not found."),
+                    HttpStatus.NOT_FOUND);
+        }
+        
         return new ResponseEntity<Product>(HttpStatus.NO_CONTENT);
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity<?> updateProduct(@PathVariable("id") long id, @RequestBody Product product){
     	Product currentProduct = productService.findById(id);
+    	
+        if (currentProduct == null) {
+            return new ResponseEntity(new CustomErrorType("Unable to update. Product with id " + id + " not found."),
+                    HttpStatus.NOT_FOUND);
+        }
     	
     	currentProduct.setName(product.getName());
     	currentProduct.setValue(product.getValue());

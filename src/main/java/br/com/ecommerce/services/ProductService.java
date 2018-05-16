@@ -11,5 +11,6 @@ public interface ProductService {
 	public List<Product> findAll();
 	public void deleteProduct(long id);
 	public Product updateProduct(Product product);
+	public boolean isProductExist(Product product);
 	
 }

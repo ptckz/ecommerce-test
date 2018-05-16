@@ -9,6 +9,6 @@ public interface CartService {
 	public Cart findById(long id);
 	public Cart addProductCart(Cart cart, Product product, int quantity);
 	public Cart updateQuantityProductCart(Cart cart, Product product, int quantity);
-	public Cart removeProductCart(Cart cart, Product product);
+	public void removeProductCart(Cart cart, Product product);
 	
 }

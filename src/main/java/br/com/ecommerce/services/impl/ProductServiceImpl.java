@@ -43,4 +43,9 @@ public class ProductServiceImpl implements ProductService{
 		return productRepository.save(product);
 	}
 
+	@Override
+	public boolean isProductExist(Product product) {
+		return productRepository.findByName(product.getName()) != null;
+	}
+
 }
