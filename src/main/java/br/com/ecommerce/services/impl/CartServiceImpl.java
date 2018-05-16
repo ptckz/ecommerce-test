@@ -98,5 +98,9 @@ public class CartServiceImpl implements CartService{
 		
 		list.remove(currentItem);
 		itemService.delete(currentItem);
+		
+		cart.setAmount(amountCarItem(list));
+		
+		cartRepository.save(cart);
 	}
 }
