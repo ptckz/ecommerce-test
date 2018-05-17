@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.ecommerce.dto.AmountDTO;
 import br.com.ecommerce.models.Cart;
 import br.com.ecommerce.models.Item;
 import br.com.ecommerce.models.Product;
@@ -43,6 +44,19 @@ public class CartController {
 		 return new ResponseEntity<Cart>(currentCart, HttpStatus.OK);
 	}
 	
+	@RequestMapping(value = "/amount/{id}", method = RequestMethod.GET)
+	public ResponseEntity<?> returnAmount(@PathVariable("id") long id) {
+		 Cart currentCart = cartService.findById(id);
+		 
+		 if (currentCart == null) {
+	            return new ResponseEntity(new CustomErrorType("Cart with id " + id 
+	                    + " not found"), HttpStatus.NOT_FOUND);
+	     }
+		 
+		 AmountDTO amountCart = cartService.bindAmountCart(currentCart);
+		 return new ResponseEntity<AmountDTO>(amountCart, HttpStatus.OK);
+	}
+
 	@RequestMapping(value = "/{idCart}/{idProduto}/{quantity}", method = RequestMethod.GET)
 	public ResponseEntity<?> addProductCart(@PathVariable("idCart") long idCart, 
 			@PathVariable("idProduto") long idProduto, 

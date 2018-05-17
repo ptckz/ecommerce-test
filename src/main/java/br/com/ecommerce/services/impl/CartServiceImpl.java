@@ -1,5 +1,6 @@
 package br.com.ecommerce.services.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.com.ecommerce.dto.AmountDTO;
 import br.com.ecommerce.models.Cart;
 import br.com.ecommerce.models.Item;
 import br.com.ecommerce.models.Product;
@@ -26,7 +28,9 @@ public class CartServiceImpl implements CartService{
 	
 	@Override
 	public Cart createNewCart() {
-		return cartRepository.save(new Cart());
+		Cart cart = new Cart();
+		cart.setItem(new ArrayList<Item>());
+		return cartRepository.save(cart);
 	}
 
 	@Override
@@ -70,7 +74,6 @@ public class CartServiceImpl implements CartService{
 			
 			cart.setAmount(amountCarItem(list));
 		}
-		
 		return cartRepository.save(cart);
 	}
 
@@ -102,5 +105,13 @@ public class CartServiceImpl implements CartService{
 		cart.setAmount(amountCarItem(list));
 		
 		cartRepository.save(cart);
+	}
+
+	@Override
+	public AmountDTO bindAmountCart(Cart cart) {
+		AmountDTO dto = new AmountDTO();
+		dto.setCart(String.valueOf(cart.getId()));
+		dto.setAmount(cart.getAmount());
+		return dto;
 	}
 }
