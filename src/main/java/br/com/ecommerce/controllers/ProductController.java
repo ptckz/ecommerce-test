@@ -63,6 +63,8 @@ public class ProductController {
                     HttpStatus.NOT_FOUND);
         }
         
+        productService.deleteProduct(currentProduct.getId());
+        
         return new ResponseEntity<Product>(HttpStatus.NO_CONTENT);
     }
     

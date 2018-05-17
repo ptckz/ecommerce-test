@@ -57,7 +57,7 @@ public class CartController {
 		 return new ResponseEntity<AmountDTO>(amountCart, HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/{idCart}/{idProduto}/{quantity}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{idCart}/{idProduto}/{quantity}", method = RequestMethod.POST)
 	public ResponseEntity<?> addProductCart(@PathVariable("idCart") long idCart, 
 			@PathVariable("idProduto") long idProduto, 
 			@PathVariable("quantity") int quantity) {
