@@ -1,5 +1,5 @@
 # Java Spring E-commerce
-Aplicação REST API baseada em Java Spring, Spring Boot, Hibernate ORM e H2(in-memory)
+Aplicação REST API baseada em Java Spring, Spring Boot, Hibernate ORM e H2(in-memory). Vai ser pré-recarregado uma pequena base de dados chamado `data.sql` que se encontra em `resources/` ao iniciar a aplicação.
 
 # REST API Endpoints
 
