@@ -83,7 +83,7 @@ public class EcommerceTest extends ApplicationBootTest {
 		Cart newCart = cartService.createNewCart();
 		long idC = newCart.getId();
 		
-		MvcResult result = mvc.perform(get("/cart/"+idC+"/"+idP+"/3")
+		MvcResult result = mvc.perform(post("/cart/"+idC+"/"+idP+"/3")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated())
                 .andReturn();
