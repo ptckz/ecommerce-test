@@ -22,14 +22,14 @@ Todas as entradas e saídas utilize JSON
 
 # Start
 
-Instale as dependências do projeto.
+Instale as dependências do projeto e gere uma imagem.
 ```sh
-$ mvn install
+$ sudo mvn install dockerfile:build
 ```
-
-
-
-
+Rode este comando e irá iniciar a aplicação
+```sh
+$ docker run -p 3001:3001 -d springio/ecommerce
+```
 Para iteragir com os Endpoints use os seguintes Scripts:
 
 **Endpoint de Produtos**
