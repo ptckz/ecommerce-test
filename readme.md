@@ -19,4 +19,61 @@ Todas as entradas e saídas utilize JSON
     PUT /{idCart}/{idProduto}/{quantity} - Atualiza a quantidade do produto no carrinho
     DELETE /{idCart}/{idProduto} - Deleta um determinado produto no carrinho
 ```
-    
+
+# Start
+
+Instale as dependências do projeto.
+```sh
+$ mvn install
+```
+
+
+
+
+Para iteragir com os Endpoints use os seguintes Scripts:
+
+**Endpoint de Produtos**
+
+Lista todos os produtos.
+```sh
+$ curl http://localhost:3001/api/v1/product/
+```
+Retornar o produto.
+```sh
+$ curl http://localhost:3001/api/v1/product/<id>
+```
+Criar um produto novo.
+```sh
+$ curl -H "Content-Type: application/json" -X POST -d '{"name":"Samsung S8","price":3460}' http://localhost:3001/api/v1/product/
+```
+Atualizando um determinado produto.
+```sh
+$ curl -H "Content-Type: application/json" -X PUT -d '{"name":"Samsung Galaxy S8","price":3460}' http://localhost:3001/api/v1/product/<id>
+```
+Deletando um determinado produto.
+```sh
+$ curl -X DELETE http://localhost:3001/api/v1/product/<id>
+```
+
+**Endpoint do Carrinho de compras**
+
+Cria uma nova carteira.
+```sh
+$ curl http://localhost:3001/api/v1/cart/
+```
+Adicionar um determinado produto em seu carinho.
+```sh
+$ curl -X POST http://localhost:3001/api/v1/cart/<idCart>/<idProduct>/<quantity>
+```
+Atualizar a quantidade de um determinado produto em seu carrinho.
+```sh
+$ curl -X PUT http://localhost:3001/api/v1/cart/<idCart>/<idProduct>/<quantity>
+```
+Deletar um determinado produto de carrinho de compras.
+```sh
+$ curl -X DELETE http://localhost:3001/api/v1/cart/<idCart>/<idProduct>
+```
+
+
+
+
