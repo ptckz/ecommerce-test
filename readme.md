@@ -1,27 +1,31 @@
 # Java Spring E-commerce
 Aplicação REST API baseada em Java Spring, Spring Boot, Hibernate ORM e H2(in-memory). Vai ser pré-recarregado uma pequena base de dados chamado `data.sql` que se encontra em `resources/` ao iniciar a aplicação.
 
+Aplicação está rodando em:
+```sh
+https://ecommerce-infra.herokuapp.com/api/v1/
+```
+
 # REST API Endpoints
 
 Todas as entradas e saídas utilize JSON
 ```
 /product
     GET / - Lista todos os produtos
-    POST / - Criar um novo produto. Necessário: String name, Int price.
+    POST / - Criar um novo produto.
     DELETE /{id} - Deleta o produto com id
-    PUT /{id} - Atualiza o Produto. Necessário: String name, Int price.
+    PUT /{id} - Atualiza o Produto.
     
 /cart
     GET / - Cria uma novo carrinho
     GET /{id} - Retorna o estado atual do carrinho
     GET /amount/{id} - Retorna o preço total do carrinho.
-    POST /{idCart}/{idProduto}/{quantity} - Adiciona um produto e sua quantidade no carrinho
-    PUT /{idCart}/{idProduto}/{quantity} - Atualiza a quantidade do produto no carrinho
-    DELETE /{idCart}/{idProduto} - Deleta um determinado produto no carrinho
+    POST /{idCart}/{idProduct}/{quantity} - Adiciona um produto e sua quantidade no carrinho
+    PUT /{idCart}/{idProduct}/{quantity} - Atualiza a quantidade do produto no carrinho
+    DELETE /{idCart}/{idProduct} - Deleta um determinado produto no carrinho
 ```
 
 # Start
-
 Instale as dependências do projeto e gere uma imagem.
 ```sh
 $ sudo mvn install dockerfile:build
