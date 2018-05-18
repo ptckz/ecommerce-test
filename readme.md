@@ -40,7 +40,7 @@ $ curl http://localhost:3001/api/v1/product/
 ```
 Retornar o produto.
 ```sh
-$ curl http://localhost:3001/api/v1/product/<id>
+$ curl http://localhost:3001/api/v1/product/<idProduct>
 ```
 Criar um produto novo.
 ```sh
@@ -52,16 +52,16 @@ $ curl -H "Content-Type: application/json" -X PUT -d '{"name":"Samsung Galaxy S8
 ```
 Deletando um determinado produto.
 ```sh
-$ curl -X DELETE http://localhost:3001/api/v1/product/<id>
+$ curl -X DELETE http://localhost:3001/api/v1/product/<idProduct>
 ```
 
 **Endpoint do Carrinho de compras**
 
-Cria uma novo Carrinho
+Cria uma nova carteira.
 ```sh
 $ curl http://localhost:3001/api/v1/cart/
 ```
-Adicionar um determinado produto em seu carrinho.
+Adicionar um determinado produto em seu carinho.
 ```sh
 $ curl -X POST http://localhost:3001/api/v1/cart/<idCart>/<idProduct>/<quantity>
 ```
@@ -69,7 +69,11 @@ Atualizar a quantidade de um determinado produto em seu carrinho.
 ```sh
 $ curl -X PUT http://localhost:3001/api/v1/cart/<idCart>/<idProduct>/<quantity>
 ```
-Deletar um determinado produto de seu carrinho de compras.
+Retornar o valor total do carrinho de compras.
+```sh
+$ curl http://localhost:3001/api/v1/cart/amount/<idCart>
+```
+Deletar um determinado produto de carrinho de compras.
 ```sh
 $ curl -X DELETE http://localhost:3001/api/v1/cart/<idCart>/<idProduct>
 ```
