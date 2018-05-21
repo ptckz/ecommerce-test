@@ -61,11 +61,11 @@ $ curl -X DELETE http://localhost:3001/api/v1/product/<idProduct>
 
 **Endpoint do Carrinho de compras**
 
-Cria uma nova carteira.
+Cria um carrinho
 ```sh
 $ curl http://localhost:3001/api/v1/cart/
 ```
-Adicionar um determinado produto em seu carinho.
+Adicionar um determinado produto em seu carrinho.
 ```sh
 $ curl -X POST http://localhost:3001/api/v1/cart/<idCart>/<idProduct>/<quantity>
 ```
